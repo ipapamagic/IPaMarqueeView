@@ -173,7 +173,7 @@ public class IPaMarqueeView: UIView {
         self.resetNextText()
         let displayLink = CADisplayLink(target: self, selector: #selector(onTick(_:)))
         displayLink.preferredFramesPerSecond = 60
-        displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+        displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
         self.displayLink = displayLink
         
     }

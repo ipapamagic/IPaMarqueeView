@@ -10,11 +10,11 @@ import IPaDesignableUI
 protocol IPaMarqueeViewCellDelegate {
     func onTap(_ cell:IPaMarqueeViewCell)
 }
-open class IPaMarqueeViewCell: UIView {
+class IPaMarqueeViewCell: UIView {
     var delegate:IPaMarqueeViewCellDelegate!
     
     @IBOutlet var widthConstraint: NSLayoutConstraint!
-    @IBOutlet public weak var textLabel: IPaDesignableLabel!
+    @IBOutlet weak var textLabel: IPaDesignableLabel!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
