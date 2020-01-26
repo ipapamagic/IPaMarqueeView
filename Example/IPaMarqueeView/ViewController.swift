@@ -38,6 +38,12 @@ extension ViewController:IPaMarqueeViewDelegate
 {
     func onTap(_ marqueeView: IPaMarqueeView, for itemIndex: Int) {
         print("tap:\(itemIndex)")
+        if marqueeView.isPausing {
+            marqueeView.runMarquee()
+        }
+        else {
+            marqueeView.pauseMarquee()
+        }
     }
     
 }

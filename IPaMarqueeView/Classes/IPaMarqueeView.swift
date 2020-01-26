@@ -12,8 +12,10 @@ import IPaDesignableUI
 }
 public class IPaMarqueeView: UIView {
     var displayLink:CADisplayLink?
+    var startX:CGFloat = 0
     var targetX:CGFloat = 0
     var startTime:TimeInterval = 0
+    var pauseStartTime:TimeInterval?
     var _currentDisplayIndex:Int = 0
     var currentDisplayIndex:Int {
         get {
@@ -57,10 +59,12 @@ public class IPaMarqueeView: UIView {
     */
     //duration for one page
     open var speed:CGFloat = 50
-    var _isRunning = false
+    open var isPausing:Bool {
+        return self.pauseStartTime != nil
+    }
     open var isRunning:Bool {
         get {
-            return _isRunning
+            return self.displayLink != nil
         }
     }
     open var delegate:IPaMarqueeViewDelegate?
@@ -102,9 +106,7 @@ public class IPaMarqueeView: UIView {
     }
     @objc func onTick(_ displayLink:CADisplayLink)
     {
-        if !self.isRunning {
-            displayLink.invalidate()
-            self.displayLink = nil
+        if let _ = pauseStartTime {
             return
         }
         let thisTick = CACurrentMediaTime()
@@ -124,7 +126,7 @@ public class IPaMarqueeView: UIView {
             }
             else {
                 var offset = self.contentScrollView.contentOffset
-                offset.x = distance
+                offset.x = self.startX + distance
                 self.contentScrollView.contentOffset = offset
                 
             }
@@ -161,9 +163,13 @@ public class IPaMarqueeView: UIView {
     
     public func runMarquee() {
         if self.isRunning {
+            if let pauseStartTime = pauseStartTime {
+                let currentTime = CACurrentMediaTime()
+                self.startTime += currentTime - pauseStartTime
+                self.pauseStartTime = nil
+            }
             return
         }
-        self._isRunning = true
         self.resetNextText()
         let displayLink = CADisplayLink(target: self, selector: #selector(onTick(_:)))
         displayLink.preferredFramesPerSecond = 60
@@ -171,8 +177,16 @@ public class IPaMarqueeView: UIView {
         self.displayLink = displayLink
         
     }
+    public func pauseMarquee() {
+        self.pauseStartTime = CACurrentMediaTime()
+    }
+    public func resetMarquee() {
+        self.contentScrollView.contentOffset = .zero
+        self.currentDisplayIndex = 0
+        self.resetNextText()
+    }
     func resetNextText() {
-
+        self.startX = self.contentScrollView.contentOffset.x
         self.targetX =  self.displayCell.first!.widthConstraint.constant
         self.startTime = CACurrentMediaTime()
         
