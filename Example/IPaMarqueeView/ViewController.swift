@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         marqueeView.texts = texts
         
+        marqueeView.textInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         marqueeView.runMarquee()
     }
     override func didReceiveMemoryWarning() {

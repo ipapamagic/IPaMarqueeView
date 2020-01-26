@@ -12,10 +12,8 @@ import IPaDesignableUI
 }
 public class IPaMarqueeView: UIView {
     var displayLink:CADisplayLink?
-    var startX:CGFloat = 0
     var targetX:CGFloat = 0
     var startTime:TimeInterval = 0
-    
     var _currentDisplayIndex:Int = 0
     var currentDisplayIndex:Int {
         get {
@@ -26,12 +24,20 @@ public class IPaMarqueeView: UIView {
             self.loadCurrentCell()
         }
     }
+    public var textInsets:UIEdgeInsets = .zero {
+        didSet {
+            for cell in self.displayCell {
+                cell.textLabel.textInsets = textInsets
+            }
+        }
+    }
     @IBOutlet var displayCell:[IPaMarqueeViewCell]!
     public var texts = [String]() {
         didSet {
             self.loadCurrentCell()
         }
     }
+    public var pauseInterval:TimeInterval = 3
     static var bundle:Bundle {
         get {
             let bundle = Bundle(for: IPaMarqueeView.self)
@@ -58,15 +64,6 @@ public class IPaMarqueeView: UIView {
         }
     }
     open var delegate:IPaMarqueeViewDelegate?
-    open var contentInset:UIEdgeInsets {
-        get {
-            return self.contentScrollView.contentInset
-        }
-        set {
-            self.contentScrollView.contentInset = newValue
-        }
-    }
-    
     
     func initialSetting() {
         IPaMarqueeView.bundle.loadNibNamed("IPaMarqueeContentView", owner: self, options: nil)
@@ -111,20 +108,28 @@ public class IPaMarqueeView: UIView {
             return
         }
         let thisTick = CACurrentMediaTime()
-        
-        let distance = CGFloat(thisTick - self.startTime) * self.speed
-        var offset = self.contentScrollView.contentOffset
-        offset.x = self.startX + distance
-        
-        self.contentScrollView.setContentOffset(offset, animated: false)
-        let cellLength = self.displayCell.first!.widthConstraint.constant
+        let timeInterval = thisTick - self.startTime
         
         
-        if distance >= cellLength {
-            self.currentDisplayIndex += 1
+        if timeInterval < self.pauseInterval {
             self.contentScrollView.contentOffset = .zero
-            self.doRunMarquee()
         }
+        else {
+            let distance = CGFloat(timeInterval - self.pauseInterval) * self.speed
+            let cellLength = self.displayCell.first!.widthConstraint.constant
+            if distance >= cellLength {
+                self.currentDisplayIndex += 1
+                self.contentScrollView.contentOffset = .zero
+                self.resetNextText()
+            }
+            else {
+                var offset = self.contentScrollView.contentOffset
+                offset.x = distance
+                self.contentScrollView.contentOffset = offset
+                
+            }
+        }
+        
         
     }
     func loadCurrentCell() {
@@ -159,39 +164,19 @@ public class IPaMarqueeView: UIView {
             return
         }
         self._isRunning = true
-        self.doRunMarquee()
+        self.resetNextText()
         let displayLink = CADisplayLink(target: self, selector: #selector(onTick(_:)))
         displayLink.preferredFramesPerSecond = 60
         displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
         self.displayLink = displayLink
         
     }
-    func doRunMarquee() {
-        let offset = self.contentScrollView.contentOffset
-//        let cellLength = self.displayCell.first!.widthConstraint.constant
-//        let pageWidth = self.contentScrollView.frame.size.width
-//
-        self.startX = offset.x
-        self.targetX = offset.x + self.displayCell.first!.widthConstraint.constant
+    func resetNextText() {
+
+        self.targetX =  self.displayCell.first!.widthConstraint.constant
         self.startTime = CACurrentMediaTime()
         
         
-//
-//        UIView.animate(withDuration: duration, delay: 0, options: [.curveLinear,.allowUserInteraction] , animations: {
-//            offset.x += self.displayCell.first!.widthConstraint.constant
-//            self.contentScrollView.contentOffset = offset
-//
-//        }, completion: {
-//            finished in
-//            if !finished {
-//                return
-//            }
-//            self.contentScrollView.setContentOffset(.zero, animated: false)
-//            self.currentDisplayIndex += 1
-//
-//
-//            self.doRunMarquee()
-//        })
     }
 }
 

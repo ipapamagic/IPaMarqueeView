@@ -25,9 +25,6 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5r-Kn-Otr" customClass="IPaDesignableLabel" customModule="IPaDesignableUI">
                             <rect key="frame" x="0.0" y="0.0" width="42" height="223"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="42" id="Rmb-qo-yCY"/>
-                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -39,20 +36,18 @@
                         <constraint firstAttribute="bottom" secondItem="j5r-Kn-Otr" secondAttribute="bottom" id="DkP-qu-wUO"/>
                         <constraint firstItem="j5r-Kn-Otr" firstAttribute="leading" secondItem="Ylw-Nz-rji" secondAttribute="leading" id="bfI-kX-u3k"/>
                         <constraint firstItem="j5r-Kn-Otr" firstAttribute="top" secondItem="Ylw-Nz-rji" secondAttribute="top" id="eFC-T6-bv2"/>
+                        <constraint firstAttribute="width" constant="42" id="vjL-lE-JAO"/>
                     </constraints>
                     <connections>
                         <outlet property="textLabel" destination="j5r-Kn-Otr" id="AQA-hq-Z2Z"/>
-                        <outlet property="widthConstraint" destination="Rmb-qo-yCY" id="pDs-P5-t91"/>
+                        <outlet property="widthConstraint" destination="vjL-lE-JAO" id="ygT-ie-twU"/>
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzR-XQ-F5D" customClass="IPaMarqueeViewCell" customModule="IPaMarqueeView" customModuleProvider="target">
-                    <rect key="frame" x="42" y="0.0" width="599" height="223"/>
+                    <rect key="frame" x="42" y="0.0" width="42" height="223"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-EC-oLG" customClass="IPaDesignableLabel" customModule="IPaDesignableUI">
-                            <rect key="frame" x="0.0" y="0.0" width="599" height="223"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="599" id="e3m-XQ-MlC"/>
-                            </constraints>
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="223"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -61,13 +56,14 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="cwS-EC-oLG" firstAttribute="bottom" secondItem="EzR-XQ-F5D" secondAttribute="bottom" id="14z-kB-Qbs"/>
+                        <constraint firstAttribute="width" constant="42" id="Sqe-Wi-a3F"/>
                         <constraint firstItem="cwS-EC-oLG" firstAttribute="leading" secondItem="EzR-XQ-F5D" secondAttribute="leading" id="T3G-Lf-vWa"/>
                         <constraint firstAttribute="trailing" secondItem="cwS-EC-oLG" secondAttribute="trailing" id="puC-9E-itR"/>
                         <constraint firstItem="cwS-EC-oLG" firstAttribute="top" secondItem="EzR-XQ-F5D" secondAttribute="top" id="yEB-7f-sNV"/>
                     </constraints>
                     <connections>
                         <outlet property="textLabel" destination="cwS-EC-oLG" id="JbM-qe-5VA"/>
-                        <outlet property="widthConstraint" destination="e3m-XQ-MlC" id="96o-bj-84b"/>
+                        <outlet property="widthConstraint" destination="Sqe-Wi-a3F" id="mOX-Ot-dnG"/>
                     </connections>
                 </view>
             </subviews>
