@@ -1,0 +1,14 @@
+source 'https://github.com/ipapamagic/IPaPods.git'
+source 'https://ipapa@bitbucket.org/tronice/tronicepod.git'
+platform :ios,  '11.0'
+use_frameworks!
+
+target 'IPaMarqueeView_Example' do
+  pod 'IPaMarqueeView', :path => '../'
+
+  target 'IPaMarqueeView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment version="4352" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IPaMarqueeView" customModule="IPaMarqueeView">
+            <connections>
+                <outlet property="contentScrollView" destination="Agy-xJ-C1e" id="Hi0-0B-sV8"/>
+                <outletCollection property="displayCell" destination="Ylw-Nz-rji" collectionClass="NSMutableArray" id="9dv-WM-mSG"/>
+                <outletCollection property="displayCell" destination="EzR-XQ-F5D" collectionClass="NSMutableArray" id="L7g-dg-EUm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" id="Agy-xJ-C1e">
+            <rect key="frame" x="0.0" y="0.0" width="649" height="223"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylw-Nz-rji" customClass="IPaMarqueeViewCell" customModule="IPaMarqueeView" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="42" height="223"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5r-Kn-Otr" customClass="IPaDesignableLabel" customModule="IPaDesignableUI">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="223"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="42" id="Rmb-qo-yCY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="j5r-Kn-Otr" secondAttribute="trailing" id="2cm-Eb-rI4"/>
+                        <constraint firstAttribute="bottom" secondItem="j5r-Kn-Otr" secondAttribute="bottom" id="DkP-qu-wUO"/>
+                        <constraint firstItem="j5r-Kn-Otr" firstAttribute="leading" secondItem="Ylw-Nz-rji" secondAttribute="leading" id="bfI-kX-u3k"/>
+                        <constraint firstItem="j5r-Kn-Otr" firstAttribute="top" secondItem="Ylw-Nz-rji" secondAttribute="top" id="eFC-T6-bv2"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="textLabel" destination="j5r-Kn-Otr" id="AQA-hq-Z2Z"/>
+                        <outlet property="widthConstraint" destination="Rmb-qo-yCY" id="pDs-P5-t91"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzR-XQ-F5D" customClass="IPaMarqueeViewCell" customModule="IPaMarqueeView" customModuleProvider="target">
+                    <rect key="frame" x="42" y="0.0" width="599" height="223"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-EC-oLG" customClass="IPaDesignableLabel" customModule="IPaDesignableUI">
+                            <rect key="frame" x="0.0" y="0.0" width="599" height="223"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="599" id="e3m-XQ-MlC"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="cwS-EC-oLG" firstAttribute="bottom" secondItem="EzR-XQ-F5D" secondAttribute="bottom" id="14z-kB-Qbs"/>
+                        <constraint firstItem="cwS-EC-oLG" firstAttribute="leading" secondItem="EzR-XQ-F5D" secondAttribute="leading" id="T3G-Lf-vWa"/>
+                        <constraint firstAttribute="trailing" secondItem="cwS-EC-oLG" secondAttribute="trailing" id="puC-9E-itR"/>
+                        <constraint firstItem="cwS-EC-oLG" firstAttribute="top" secondItem="EzR-XQ-F5D" secondAttribute="top" id="yEB-7f-sNV"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="textLabel" destination="cwS-EC-oLG" id="JbM-qe-5VA"/>
+                        <outlet property="widthConstraint" destination="e3m-XQ-MlC" id="96o-bj-84b"/>
+                    </connections>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="EzR-XQ-F5D" firstAttribute="bottom" secondItem="Ylw-Nz-rji" secondAttribute="bottom" id="HnD-Ya-cnN"/>
+                <constraint firstItem="EzR-XQ-F5D" firstAttribute="top" secondItem="Ylw-Nz-rji" secondAttribute="top" id="Ip2-FL-jkI"/>
+                <constraint firstItem="Ylw-Nz-rji" firstAttribute="bottom" secondItem="Jtz-3v-eVj" secondAttribute="bottom" id="NL4-Rr-ojD"/>
+                <constraint firstItem="EzR-XQ-F5D" firstAttribute="trailing" secondItem="Jtz-3v-eVj" secondAttribute="trailing" id="PWh-cP-u6f"/>
+                <constraint firstItem="EzR-XQ-F5D" firstAttribute="leading" secondItem="Ylw-Nz-rji" secondAttribute="trailing" id="Tdg-fv-RNV"/>
+                <constraint firstItem="Ylw-Nz-rji" firstAttribute="leading" secondItem="Agy-xJ-C1e" secondAttribute="leading" id="obj-nl-rjM"/>
+                <constraint firstItem="Ylw-Nz-rji" firstAttribute="height" secondItem="Agy-xJ-C1e" secondAttribute="height" id="sj1-VY-fBT"/>
+                <constraint firstItem="Ylw-Nz-rji" firstAttribute="top" secondItem="Jtz-3v-eVj" secondAttribute="top" id="zo1-lP-sTe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="x4u-LP-gcH"/>
+            <viewLayoutGuide key="contentLayoutGuide" id="Jtz-3v-eVj"/>
+            <viewLayoutGuide key="frameLayoutGuide" id="XUP-vR-CW9"/>
+            <connections>
+                <outlet property="delegate" destination="-1" id="3so-XO-xb0"/>
+            </connections>
+            <point key="canvasLocation" x="294.92753623188406" y="-190.51339285714286"/>
+        </scrollView>
+    </objects>
+</document>
