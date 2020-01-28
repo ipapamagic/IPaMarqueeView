@@ -100,6 +100,7 @@ public class IPaMarqueeView: UIView {
     }
     func configureCell(_ cell:IPaMarqueeViewCell) {
         cell.delegate = self
+        cell.textLabel.text = ""
     }
     func realIndex(for index:Int ) -> Int {
         return index % self.texts.count
