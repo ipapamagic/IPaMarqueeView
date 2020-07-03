@@ -22,7 +22,7 @@ public class IPaMarqueeView: UIView {
             return _currentDisplayIndex
         }
         set {
-            self._currentDisplayIndex = newValue % self.texts.count
+            self._currentDisplayIndex = ((self.texts.count > 0) ? (newValue % self.texts.count) : 0)
             self.loadCurrentCell()
         }
     }
@@ -139,7 +139,8 @@ public class IPaMarqueeView: UIView {
         var index = self.currentDisplayIndex
         let pageSize = self.contentScrollView.frame.width
         for subView in self.displayCell {
-            let text = self.texts[index]
+            
+            let text = (self.texts.count > index) ? self.texts[index] : ""
             let cell = subView
             cell.textLabel.text = text
             cell.widthConstraint.isActive = false
@@ -155,7 +156,9 @@ public class IPaMarqueeView: UIView {
             
             
             index += 1
-            index %= self.texts.count
+            if self.texts.count > 0 {
+                index %= self.texts.count
+            }
         }
         
         
