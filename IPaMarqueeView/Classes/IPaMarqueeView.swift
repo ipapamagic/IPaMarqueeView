@@ -9,6 +9,8 @@ import UIKit
 import IPaDesignableUI
 @objc public protocol IPaMarqueeViewDelegate {
     @objc optional func onTap(_ marqueeView:IPaMarqueeView,for itemIndex:Int)
+    func numberOfItems(_ marqueeView:IPaMarqueeView) -> Int
+    func configureLabel(_ label:IPaDesignableLabel,of  marqueeView:IPaMarqueeView,at index:Int)
 }
 public class IPaMarqueeView: UIView {
     var displayLink:CADisplayLink?
@@ -22,8 +24,24 @@ public class IPaMarqueeView: UIView {
             return _currentDisplayIndex
         }
         set {
-            self._currentDisplayIndex = ((self.texts.count > 0) ? (newValue % self.texts.count) : 0)
-            self.loadCurrentCell()
+            let numberOfText = self.numberOfText
+            self._currentDisplayIndex = (numberOfText > 0) ? (newValue % numberOfText) : 0
+            self.reloadData()
+        }
+    }
+    var _intrinsicContentSize: CGSize = .zero
+    public override var intrinsicContentSize: CGSize
+    {
+        get {
+            return _intrinsicContentSize
+        }
+        set {
+            _intrinsicContentSize = newValue
+        }
+    }
+    var numberOfText:Int {
+        get {
+            return (self.delegate?.numberOfItems(self) ?? 0)
         }
     }
     public var textInsets:UIEdgeInsets = .zero {
@@ -34,11 +52,7 @@ public class IPaMarqueeView: UIView {
         }
     }
     @IBOutlet var displayCell:[IPaMarqueeViewCell]!
-    public var texts = [String]() {
-        didSet {
-            self.loadCurrentCell()
-        }
-    }
+   
     public var pauseInterval:TimeInterval = 3
     static var bundle:Bundle {
         get {
@@ -67,7 +81,7 @@ public class IPaMarqueeView: UIView {
             return self.displayLink != nil
         }
     }
-    open var delegate:IPaMarqueeViewDelegate?
+    @IBOutlet open var delegate:IPaMarqueeViewDelegate?
     
     func initialSetting() {
         IPaMarqueeView.bundle.loadNibNamed("IPaMarqueeContentView", owner: self, options: nil)
@@ -103,7 +117,7 @@ public class IPaMarqueeView: UIView {
         cell.textLabel.text = ""
     }
     func realIndex(for index:Int ) -> Int {
-        return index % self.texts.count
+        return index % self.numberOfText
     }
     @objc func onTick(_ displayLink:CADisplayLink)
     {
@@ -135,14 +149,13 @@ public class IPaMarqueeView: UIView {
         
         
     }
-    func loadCurrentCell() {
+    public func reloadData() {
         var index = self.currentDisplayIndex
-        let pageSize = self.contentScrollView.frame.width
+        let pageSize = max(1,self.contentScrollView.frame.width)
+        let numberOfText = self.numberOfText
         for subView in self.displayCell {
-            
-            let text = (self.texts.count > index) ? self.texts[index] : ""
             let cell = subView
-            cell.textLabel.text = text
+            self.delegate?.configureLabel(cell.textLabel, of: self, at: index)
             cell.widthConstraint.isActive = false
             cell.textLabel.sizeToFit()
             let ratio = Int(cell.textLabel.frame.width / pageSize) + 1
@@ -156,8 +169,8 @@ public class IPaMarqueeView: UIView {
             
             
             index += 1
-            if self.texts.count > 0 {
-                index %= self.texts.count
+            if numberOfText > 0 {
+                index %= numberOfText
             }
         }
         
