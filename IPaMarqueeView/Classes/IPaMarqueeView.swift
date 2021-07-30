@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import IPaDesignableUI
+import IPaUIKitHelper
 @objc public protocol IPaMarqueeViewDelegate {
     @objc optional func onTap(_ marqueeView:IPaMarqueeView,for itemIndex:Int)
     func numberOfItems(_ marqueeView:IPaMarqueeView) -> Int
-    func configureLabel(_ label:IPaDesignableLabel,of  marqueeView:IPaMarqueeView,at index:Int)
+    func configureLabel(_ label:IPaUILabel,of  marqueeView:IPaMarqueeView,at index:Int)
 }
 public class IPaMarqueeView: UIView {
     var displayLink:CADisplayLink?

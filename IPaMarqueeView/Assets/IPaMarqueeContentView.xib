@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
         <deployment version="4352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +22,7 @@
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylw-Nz-rji" customClass="IPaMarqueeViewCell" customModule="IPaMarqueeView" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="42" height="223"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5r-Kn-Otr" customClass="IPaDesignableLabel" customModule="IPaDesignableUI">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5r-Kn-Otr" customClass="IPaUILabel" customModule="IPaDesignableUI">
                             <rect key="frame" x="0.0" y="0.0" width="42" height="223"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -46,7 +45,7 @@
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzR-XQ-F5D" customClass="IPaMarqueeViewCell" customModule="IPaMarqueeView" customModuleProvider="target">
                     <rect key="frame" x="42" y="0.0" width="42" height="223"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-EC-oLG" customClass="IPaDesignableLabel" customModule="IPaDesignableUI">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-EC-oLG" customClass="IPaUILabel" customModule="IPaDesignableUI">
                             <rect key="frame" x="0.0" y="0.0" width="42" height="223"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -67,6 +66,7 @@
                     </connections>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="x4u-LP-gcH"/>
             <constraints>
                 <constraint firstItem="EzR-XQ-F5D" firstAttribute="bottom" secondItem="Ylw-Nz-rji" secondAttribute="bottom" id="HnD-Ya-cnN"/>
                 <constraint firstItem="EzR-XQ-F5D" firstAttribute="top" secondItem="Ylw-Nz-rji" secondAttribute="top" id="Ip2-FL-jkI"/>
@@ -78,7 +78,6 @@
                 <constraint firstItem="Ylw-Nz-rji" firstAttribute="top" secondItem="Jtz-3v-eVj" secondAttribute="top" id="zo1-lP-sTe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="x4u-LP-gcH"/>
             <viewLayoutGuide key="contentLayoutGuide" id="Jtz-3v-eVj"/>
             <viewLayoutGuide key="frameLayoutGuide" id="XUP-vR-CW9"/>
             <connections>
