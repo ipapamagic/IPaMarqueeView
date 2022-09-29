@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IPaMarqueeView'
-  s.version          = '2.0'
+  s.version          = '2.0.0'
   s.summary          = 'A short description of IPaMarqueeView.'
 
 # This description is used to generate tags and improve search results.
@@ -30,13 +30,12 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'IPaMarqueeView/Classes/**/*'
-  s.swift_version = '5.1'
+  s.source_files = 'Sources/IPaMarqueeView/**/*.swift'
   s.resource_bundles = {
-     'IPaMarqueeView' => ['IPaMarqueeView/Assets/*.*']
+     'IPaMarqueeView' => ['Sources/IPaMarqueeView/*.xib']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'IPaUIKitHelper/IPaUIKit','~> 1.0'
+  s.dependency 'IPaUIKitHelper/IPaUIKit','~> 1.2.0'
 end
