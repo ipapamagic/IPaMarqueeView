@@ -54,12 +54,8 @@ public class IPaMarqueeView: UIView {
     @IBOutlet var displayCell:[IPaMarqueeViewCell]!
    
     public var pauseInterval:TimeInterval = 3
-    static var bundle:Bundle {
-        get {
-            let bundle = Bundle(for: IPaMarqueeView.self)
-            let bundleUrl = bundle.url(forResource: "IPaMarqueeView", withExtension: "bundle")!
-            return Bundle(url: bundleUrl)!
-        }
+    static var bundle: Bundle {
+        return Bundle.module
     }
     @IBOutlet var contentScrollView: UIScrollView!
     
